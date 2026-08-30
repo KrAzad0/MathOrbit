@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MathOrbit — an open-source interactive graphing calculator built from scratch." />
+  <title>MathOrbit</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1>MathOrbit</h1>
+          <p>Interactive mathematics from first principles</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="homeViewBtn" class="ghost-btn" title="Reset view">Reset view</button>
+        <a class="ghost-btn" href="https://github.com/KrAzad0/MathOrbit" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div>
+            <h2>Expressions</h2>
+            <p>Use x as the variable.</p>
+          </div>
+          <button id="addExpressionBtn" class="add-btn" title="Add expression">+</button>
+        </div>
+
+        <div id="expressionList" class="expression-list"></div>
+
+        <section class="help-card">
+          <h3>Try these</h3>
+          <button class="example-chip" data-expression="sin(x)">sin(x)</button>
+          <button class="example-chip" data-expression="x^2 / 4 - 2">x² / 4 − 2</button>
+          <button class="example-chip" data-expression="2*cos(x) + sin(2*x)">2cos(x)+sin(2x)</button>
+          <button class="example-chip" data-expression="sqrt(abs(x))">√|x|</button>
+          <p class="help-text">Functions: sin, cos, tan, asin, acos, atan, sqrt, abs, exp, log, ln, floor, ceil, round.</p>
+        </section>
+      </aside>
+
+      <section class="graph-panel">
+        <canvas id="graphCanvas" aria-label="Interactive graphing canvas"></canvas>
+        <div class="graph-toolbar">
+          <button id="zoomInBtn" title="Zoom in">+</button>
+          <button id="zoomOutBtn" title="Zoom out">−</button>
+          <button id="centerBtn" title="Center graph">⌂</button>
+        </div>
+        <div id="cursorReadout" class="cursor-readout">x = 0.00, y = 0.00</div>
+        <div class="hint">Drag to pan • Scroll to zoom</div>
+      </section>
+    </main>
+  </div>
+
+  <template id="expressionTemplate">
+    <div class="expression-row">
+      <button class="visibility-dot" aria-label="Toggle expression visibility"></button>
+      <div class="expression-body">
+        <div class="expression-prefix">y =</div>
+        <input class="expression-input" type="text" autocomplete="off" spellcheck="false" />
+        <div class="expression-status"></div>
+      </div>
+      <button class="delete-expression" title="Delete expression">×</button>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
